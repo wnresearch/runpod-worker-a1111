@@ -16,9 +16,11 @@ if __name__ == '__main__':
                     image_content
                 ],
                 "override_settings": {
-                    "sd_model_checkpoint": "deliberate_v2",
-                    "sd_vae": "vae-ft-mse-840000-ema-pruned.safetensors"
+                    "sd_model_checkpoint": "sd_xl_base_1.0",
+                    "sd_vae": "sdxl_vae.safetensors"
                 },
+                "refiner_checkpoint": "sd_xl_refiner_1.0",
+                "refiner_switch_at": 0.8,
                 "prompt": "at the ocean",
                 "negative_prompt": "",
                 "seed": -1,
@@ -26,8 +28,8 @@ if __name__ == '__main__':
                 "denoising_strength": 0.55,
                 "steps": 30,
                 "cfg_scale": 10,
-                "width": 480,
-                "height": 640,
+                "width": 960,
+                "height": 1280,
                 "sampler_name": "DPM++ SDE Karras",
                 "sampler_index": "DPM++ SDE Karras",
                 "restore_faces": True

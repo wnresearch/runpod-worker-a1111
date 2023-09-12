@@ -19,6 +19,8 @@ if __name__ == '__main__':
                     "sd_model_checkpoint": "sd_xl_base_1.0",
                     "sd_vae": "sdxl_vae.safetensors"
                 },
+                "refiner_checkpoint": "sd_xl_refiner_1.0",
+                "refiner_switch_at": 0.8,
                 "prompt": "at the ocean",
                 "negative_prompt": "",
                 "seed": -1,
