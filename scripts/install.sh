@@ -43,7 +43,20 @@ echo "Downloading Deliberate v2 model"
 cd /workspace/stable-diffusion-webui/models/Stable-diffusion
 wget -O deliberate_v2.safetensors https://civitai.com/api/download/models/15236
 
-echo "Downloading ControlNet models"
+echo "Downloading SDXL base model"
+wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
+
+echo "Downloading SDXL Refiner"
+wget https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors
+
+echo "Downloading SD 1.5 VAE"
+cd /workspace/stable-diffusion-webui/models/VAE
+wget https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors
+
+echo "Downloading SDXL VAE"
+wget https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors
+
+echo "Downloading SD 1.5 ControlNet models"
 mkdir -p /workspace/stable-diffusion-webui/models/ControlNet
 cd /workspace/stable-diffusion-webui/models/ControlNet
 wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose.pth
@@ -54,7 +67,11 @@ wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p
 wget https://huggingface.co/ioclab/ioc-controlnet/resolve/main/models/control_v1p_sd15_brightness.safetensors
 wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
 
+echo "Downloading SDXL ControlNet models"
+wget https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffusers_xl_canny_full.safetensors
+
 echo "Downloading Upscalers"
+mkdir -p /workspace/stable-diffusion-webui/models/ESRGAN
 cd /workspace/stable-diffusion-webui/models/ESRGAN
 wget https://huggingface.co/ashleykleynhans/upscalers/resolve/main/4x-UltraSharp.pth
 wget https://huggingface.co/ashleykleynhans/upscalers/resolve/main/lollypop.pth
