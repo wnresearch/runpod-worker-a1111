@@ -1,67 +1,12 @@
 TXT2IMG_SCHEMA = {
-    'enable_hr': {
-        'type': bool,
-        'required': False,
-        'default': False
-    },
-    'denoising_strength': {
-        'type': float,
-        'required': False,
-        'default': 0
-    },
-    'firstphase_width': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'firstphase_height': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'hr_scale': {
-        'type': int,
-        'required': False,
-        'default': 2
-    },
-    'hr_upscaler': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
-    'hr_second_pass_steps': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'hr_resize_x': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'hr_resize_y': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'hr_sampler_name': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
-    'hr_prompt': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
-    'hr_negative_prompt': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
     'prompt': {
         'type': str,
         'required': True
+    },
+    'negative_prompt': {
+        'type': str,
+        'required': False,
+        'default': ''
     },
     'styles': {
         'type': list,
@@ -172,13 +117,13 @@ TXT2IMG_SCHEMA = {
         'required': False,
         'default': False
     },
-    'negative_prompt': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
     'eta': {
         'type': int,
+        'required': False,
+        'default': 0
+    },
+    'denoising_strength': {
+        'type': float,
         'required': False,
         'default': 0
     },
@@ -217,10 +162,85 @@ TXT2IMG_SCHEMA = {
         'required': False,
         'default': True
     },
-    'script_args': {
-        'type': list,
+    'refiner_checkpoint': {
+        'type': str,
         'required': False,
-        'default': []
+        'default': ''
+    },
+    'refiner_switch_at': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'disable_extra_networks': {
+        'type': bool,
+        'required': False,
+        'default': False
+    },
+    'comments': {
+        'type': dict,
+        'required': False,
+        'default': {}
+    },
+    'enable_hr': {
+        'type': bool,
+        'required': False,
+        'default': False
+    },
+    'firstphase_width': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'firstphase_height': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'hr_scale': {
+        'type': int,
+        'required': False,
+        'default': 2
+    },
+    'hr_upscaler': {
+        'type': str,
+        'required': False,
+        'default': ''
+    },
+    'hr_second_pass_steps': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'hr_resize_x': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'hr_resize_y': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'hr_checkpoint_name': {
+        'type': str,
+        'required': False,
+        'default': ''
+    },
+    'hr_sampler_name': {
+        'type': str,
+        'required': False,
+        'default': ''
+    },
+    'hr_prompt': {
+        'type': str,
+        'required': False,
+        'default': ''
+    },
+    'hr_negative_prompt': {
+        'type': str,
+        'required': False,
+        'default': ''
     },
     'sampler_index': {
         'type': str,
@@ -255,6 +275,11 @@ TXT2IMG_SCHEMA = {
         'type': str,
         'required': False,
         'default': ''
+    },
+    'script_args': {
+        'type': list,
+        'required': False,
+        'default': []
     },
     'send_images': {
         'type': bool,

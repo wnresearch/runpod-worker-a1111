@@ -1,66 +1,12 @@
 IMG2IMG_SCHEMA = {
-    'init_images': {
-        'type': list,
-        'required': True
-    },
-    'resize_mode': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'denoising_strength': {
-        'type': float,
-        'required': False,
-        'default': 0.75
-    },
-    'image_cfg_scale': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'mask_blur': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'mask_blur_x': {
-        'type': int,
-        'required': False,
-        'default': 4
-    },
-    'mask_blur_y': {
-        'type': int,
-        'required': False,
-        'default': 4
-    },
-    'inpainting_fill': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'inpaint_full_res': {
-        'type': bool,
-        'required': False,
-        'default': True
-    },
-    'inpaint_full_res_padding': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'inpainting_mask_invert': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
-    'initial_noise_multiplier': {
-        'type': int,
-        'required': False,
-        'default': 0
-    },
     'prompt': {
         'type': str,
         'required': True
+    },
+    'negative_prompt': {
+        'type': str,
+        'required': False,
+        'default': ''
     },
     'styles': {
         'type': list,
@@ -171,15 +117,15 @@ IMG2IMG_SCHEMA = {
         'required': False,
         'default': False
     },
-    'negative_prompt': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
     'eta': {
         'type': int,
         'required': False,
         'default': 0
+    },
+    'denoising_strength': {
+        'type': float,
+        'required': False,
+        'default': 0.75
     },
     's_min_uncond': {
         'type': int,
@@ -216,10 +162,89 @@ IMG2IMG_SCHEMA = {
         'required': False,
         'default': True
     },
-    'script_args': {
-        'type': list,
+    'refiner_checkpoint': {
+        'type': str,
         'required': False,
-        'default': []
+        'default': ''
+    },
+    'refiner_switch_at': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'disable_extra_networks': {
+        'type': bool,
+        'required': False,
+        'default': False
+    },
+    'comments': {
+        'type': dict,
+        'required': False,
+        'default': {}
+    },
+    'init_images': {
+        'type': list,
+        'required': True
+    },
+    'resize_mode': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'image_cfg_scale': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'mask': {
+        'type': str,
+        'required': False,
+        'default': ''
+    },
+    'mask_blur_x': {
+        'type': int,
+        'required': False,
+        'default': 4
+    },
+    'mask_blur_y': {
+        'type': int,
+        'required': False,
+        'default': 4
+    },
+    'mask_blur': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'inpainting_fill': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'inpaint_full_res': {
+        'type': bool,
+        'required': False,
+        'default': True
+    },
+    'inpaint_full_res_padding': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'inpainting_mask_invert': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'initial_noise_multiplier': {
+        'type': int,
+        'required': False,
+        'default': 0
+    },
+    'latent_mask': {
+        'type': str,
+        'required': False,
+        'default': ''
     },
     'sampler_index': {
         'type': str,
@@ -259,6 +284,11 @@ IMG2IMG_SCHEMA = {
         'type': str,
         'required': False,
         'default': ''
+    },
+    'script_args': {
+        'type': list,
+        'required': False,
+        'default': []
     },
     'send_images': {
         'type': bool,
