@@ -16,8 +16,8 @@ if __name__ == '__main__':
                     image_content
                 ],
                 "override_settings": {
-                    "sd_model_checkpoint": "deliberate_v2",
-                    "sd_vae": "vae-ft-mse-840000-ema-pruned.safetensors"
+                    "sd_model_checkpoint": "sd_xl_base_1.0",
+                    "sd_vae": "sdxl_vae.safetensors"
                 },
                 "prompt": "at the ocean",
                 "negative_prompt": "",
@@ -26,8 +26,8 @@ if __name__ == '__main__':
                 "denoising_strength": 0.75,
                 "steps": 30,
                 "cfg_scale": 7,
-                "width": 480,
-                "height": 640,
+                "width": 960,
+                "height": 1280,
                 "sampler_name": "DPM++ SDE Karras",
                 "sampler_index": "DPM++ SDE Karras",
                 "restore_faces": False,
@@ -36,11 +36,11 @@ if __name__ == '__main__':
                         "args": [
                             {
                                 "module": "canny",
-                                "model": "control_v11p_sd15_canny",
+                                "model": "diffusers_xl_canny_full",
                                 "weight": 1,
                                 "resize_mode": "Crop and Resize",
                                 "lowvram": False,
-                                "processor_res": 512,
+                                "processor_res": 1024,
                                 "threshold_a": 75,
                                 "threshold_b": 75,
                                 "guidance": 1,
