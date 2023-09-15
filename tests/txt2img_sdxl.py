@@ -16,7 +16,7 @@ if __name__ == '__main__':
                 },
                 "refiner_checkpoint": "sd_xl_refiner_1.0",
                 "refiner_switch_at": 0.8,
-                "prompt": "an astronaut riding a green horse",
+                "prompt": "a photo of an astronaut riding a horse on mars",
                 "negative_prompt": "",
                 "seed": -1,
                 "batch_size": 1,

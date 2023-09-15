@@ -20,6 +20,7 @@ Network Volume.
 docs/installing.md)
 2. [Building the Docker image](docs/building.md)
 3. [Deploying on RunPod Serveless](docs/deploying.md)
+4. [Frequently Asked Questions](docs/faq.md)
 
 ## RunPod API Endpoint
 

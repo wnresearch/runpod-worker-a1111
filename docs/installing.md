@@ -63,7 +63,7 @@ pip install -r requirements.txt
 2. Install the Serverless dependencies:
 ```bash
 cd /workspace/stable-diffusion-webui
-pip3 install huggingface_hub runpod>=0.10.0
+pip3 install huggingface_hub runpod
 ```
 3. Download some models, for example `SDXL` and `Deliberate v2`:
 ```bash
