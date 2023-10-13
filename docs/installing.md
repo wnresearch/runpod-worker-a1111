@@ -46,19 +46,19 @@ python -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 # Install Torch and xformers
-pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip install --no-cache-dir xformers
+pip3 install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir xformers
 
 # Install A1111 Web UI
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py
-python -m install-automatic --skip-torch-cuda-test
+python3 -m install-automatic --skip-torch-cuda-test
 
 # Clone the ControlNet Extension
 git clone https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
 
 # Install dependencies for ControlNet
 cd extensions/sd-webui-controlnet
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 2. Install the Serverless dependencies:
 ```bash
