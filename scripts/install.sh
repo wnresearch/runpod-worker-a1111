@@ -22,7 +22,7 @@ echo "Installing Torch"
 pip install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 echo "Installing xformers"
-pip install --no-cache-dir xformers
+pip install --no-cache-dir xformers==0.0.22
 
 echo "Installing A1111 Web UI"
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py
