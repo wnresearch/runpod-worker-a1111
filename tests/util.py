@@ -128,6 +128,9 @@ def post_request(payload):
                     and 'status' in resp_json['output'] \
                     and resp_json['output']['status'] == 'error':
                 print(f'ERROR: {resp_json["output"]["message"]}')
+            elif job_status == STATUS_FAILED:
+                print('ERROR: Job FAILED!')
+                print(json.dumps(json.loads(resp_json['error']), indent=4, default=str))
             else:
                 print(json.dumps(resp_json, indent=4, default=str))
     else:
