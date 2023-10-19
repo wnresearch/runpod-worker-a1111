@@ -92,21 +92,21 @@ def handler(event):
 
     if 'errors' in validated_input:
         return {
-            'error': validated_input['errors']
+            'error': '\n'.join(validated_input['errors'])
         }
 
     validated_api = validate_api(event)
 
     if 'errors' in validated_api:
         return {
-            'error': validated_api['errors']
+            'error': '\n'.join(validated_input['errors'])
         }
 
     endpoint, method, validated_input = validate_payload(event)
 
     if 'errors' in validated_input:
         return {
-            'error': validated_input['errors']
+            'error': '\n'.join(validated_input['errors'])
         }
 
     if 'validated_input' in validated_input:
