@@ -9,7 +9,7 @@ from schemas.img2img import IMG2IMG_SCHEMA
 from schemas.txt2img import TXT2IMG_SCHEMA
 from schemas.options import OPTIONS_SCHEMA
 
-BASE_URI = 'http://127.0.0.1:3000'
+BASE_URI = 'https://2yju4zvd2p0x7y-3000.proxy.runpod.net'
 TIMEOUT = 600
 
 session = requests.Session()
@@ -126,11 +126,16 @@ def handler(event):
         if response.status_code == 200:
             return resp_json
         else:
+            if 'detail' in resp_json:
+                detail = resp_json['detail']
+            else:
+                detail = ''
+
             return {
                 'error': {
                     'message': 'A1111 API call failed',
                     'status_code': response.status_code,
-                    'detail': resp_json
+                    'detail': detail
                 }
             }
 
