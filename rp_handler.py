@@ -4,6 +4,7 @@ import runpod
 from runpod.serverless.utils.rp_validator import validate
 from runpod.serverless.modules.rp_logger import RunPodLogger
 from requests.adapters import HTTPAdapter, Retry
+from schemas.input import INPUT_SCHEMA
 from schemas.api import API_SCHEMA
 from schemas.img2img import IMG2IMG_SCHEMA
 from schemas.txt2img import TXT2IMG_SCHEMA
@@ -56,19 +57,12 @@ def send_post_request(endpoint, payload):
     )
 
 
+def validate_input(event):
+    return validate(event['input'], INPUT_SCHEMA)
+
+
 def validate_api(event):
-    if 'api' not in event['input']:
-        return {
-            'errors': '"api" is a required field in the "input" payload'
-        }
-
     api = event['input']['api']
-
-    if type(api) is not dict:
-        return {
-            'errors': '"api" must be a dictionary containing "method" and "endpoint"'
-        }
-
     api['endpoint'] = api['endpoint'].lstrip('/')
 
     return validate(api, API_SCHEMA)
@@ -94,6 +88,13 @@ def validate_payload(event):
 #                                RunPod Handler                                #
 # ---------------------------------------------------------------------------- #
 def handler(event):
+    validated_input = validate_input(event)
+
+    if 'errors' in validated_input:
+        return {
+            'error': validated_input['errors']
+        }
+
     validated_api = validate_api(event)
 
     if 'errors' in validated_api:
