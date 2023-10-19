@@ -9,7 +9,7 @@ from schemas.img2img import IMG2IMG_SCHEMA
 from schemas.txt2img import TXT2IMG_SCHEMA
 from schemas.options import OPTIONS_SCHEMA
 
-BASE_URL = 'http://127.0.0.1:3000'
+BASE_URI = 'http://127.0.0.1:3000'
 TIMEOUT = 600
 
 session = requests.Session()
@@ -43,14 +43,14 @@ def wait_for_service(url):
 
 def send_get_request(endpoint):
     return session.get(
-        url=f'{BASE_URL}/{endpoint}',
+        url=f'{BASE_URI}/{endpoint}',
         timeout=TIMEOUT
     )
 
 
 def send_post_request(endpoint, payload):
     return session.post(
-        url=f'{BASE_URL}/{endpoint}',
+        url=f'{BASE_URI}/{endpoint}',
         json=payload,
         timeout=TIMEOUT
     )
@@ -129,7 +129,7 @@ def handler(event):
 
 
 if __name__ == "__main__":
-    wait_for_service(url='http://127.0.0.1:3000/sdapi/v1/sd-models')
+    wait_for_service(f'{BASE_URI}/sdapi/v1/sd-models')
     logger.log('Automatic1111 API is ready', 'INFO')
     logger.log('Starting RunPod Serverless...', 'INFO')
     runpod.serverless.start(
