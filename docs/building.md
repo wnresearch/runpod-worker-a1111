@@ -4,7 +4,7 @@ You can either build this Docker image yourself, your alternatively,
 you can use my pre-built image:
 
 ```
-ashleykza/runpod-worker-a1111:2.0.0
+ashleykza/runpod-worker-a1111:2.0.1
 ```
 
 If you choose to build it yourself:

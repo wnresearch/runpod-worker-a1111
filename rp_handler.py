@@ -120,12 +120,25 @@ def handler(event):
             response = send_get_request(endpoint)
         elif method == 'POST':
             response = send_post_request(endpoint, payload)
+
+        resp_json = response.json()
+
+        if response.status_code == 200:
+            return resp_json
+        else:
+            return {
+                'error': {
+                    'message': 'A1111 API call failed',
+                    'status_code': response.status_code,
+                    'detail': resp_json
+                }
+            }
+
+        return resp_json
     except Exception as e:
         return {
             'error': str(e)
         }
-
-    return response.json()
 
 
 if __name__ == "__main__":
