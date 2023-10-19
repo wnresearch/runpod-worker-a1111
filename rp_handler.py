@@ -126,24 +126,9 @@ def handler(event):
         if response.status_code == 200:
             return resp_json
         else:
-            if 'detail' in resp_json:
-                detail = resp_json['detail']
-            else:
-                detail = ''
-
-            return {
-                'error': {
-                    'message': 'A1111 API call failed',
-                    'status_code': response.status_code,
-                    'detail': detail
-                }
-            }
-
-        return resp_json
+            raise Exception(resp_json)
     except Exception as e:
-        return {
-            'error': str(e)
-        }
+        raise
 
 
 if __name__ == "__main__":
