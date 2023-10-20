@@ -131,9 +131,12 @@ def post_request(payload):
             elif job_status == STATUS_FAILED:
                 print('ERROR: Job FAILED!')
 
-                if isinstance(resp_json['error'], dict):
-                    print(json.dumps(json.loads(resp_json['error']), indent=4, default=str))
-                else:
+                try:
+                    error = json.loads(resp_json['error'])
+                    print(error['error_type'])
+                    print(error['error_message'])
+                    print(error['error_traceback'])
+                except Exception as e:
                     print(json.dumps(resp_json, indent=4, default=str))
             else:
                 print(json.dumps(resp_json, indent=4, default=str))

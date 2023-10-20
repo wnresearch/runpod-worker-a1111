@@ -168,7 +168,7 @@ TXT2IMG_SCHEMA = {
         'default': ''
     },
     'refiner_switch_at': {
-        'type': int,
+        'type': float,
         'required': False,
         'default': 0
     },

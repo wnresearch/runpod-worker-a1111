@@ -8,7 +8,7 @@ from schemas.input import INPUT_SCHEMA
 from schemas.api import API_SCHEMA
 from schemas.img2img import IMG2IMG_SCHEMA
 from schemas.txt2img import TXT2IMG_SCHEMA
-from schemas.options import OPTIONS_SCHEMA
+from schemas.interrogate import INTERROGATE_SCHEMA
 
 BASE_URI = 'http://127.0.0.1:3000'
 TIMEOUT = 600
@@ -74,12 +74,15 @@ def validate_payload(event):
     payload = event['input']['payload']
     validated_input = payload
 
-    if endpoint == 'txt2img':
+    if endpoint == 'sdapi/v1/txt2img':
+        logger.debug(f'Validating /{endpoint} payload')
         validated_input = validate(payload, TXT2IMG_SCHEMA)
-    elif endpoint == 'img2img':
-        validated_input = validate(payload, IMG2IMG_SCHEMA)
-    elif endpoint == 'options' and method == 'POST':
-        validated_input = validate(payload, OPTIONS_SCHEMA)
+    # elif endpoint == 'sdapi/v1/img2img':
+    #     logger.debug(f'Validating /{endpoint} payload')
+    #     validated_input = validate(payload, IMG2IMG_SCHEMA)
+    elif endpoint == 'sdapi/v1/interrogate' and method == 'POST':
+        logger.debug(f'Validating /{endpoint} payload')
+        validated_input = validate(payload, INTERROGATE_SCHEMA)
 
     return endpoint, event['input']['api']['method'], validated_input
 
@@ -99,20 +102,20 @@ def handler(event):
 
     if 'errors' in validated_api:
         return {
-            'error': '\n'.join(validated_input['errors'])
+            'error': '\n'.join(validated_api['errors'])
         }
 
-    endpoint, method, validated_input = validate_payload(event)
+    endpoint, method, validated_payload = validate_payload(event)
 
-    if 'errors' in validated_input:
+    if 'errors' in validated_payload:
         return {
-            'error': '\n'.join(validated_input['errors'])
+            'error': '\n'.join(validated_payload['errors'])
         }
 
-    if 'validated_input' in validated_input:
-        payload = validated_input['validated_input']
+    if 'validated_input' in validated_payload:
+        payload = validated_payload['validated_input']
     else:
-        payload = validated_input
+        payload = validated_payload
 
     try:
         logger.log(f'Sending {method} request to: /{endpoint}')
