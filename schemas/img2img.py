@@ -196,11 +196,12 @@ IMG2IMG_SCHEMA = {
         'required': False,
         'default': 0
     },
-    'mask': {
-        'type': str,
-        'required': False,
-        'default': ''
-    },
+    # Setting this as an empty string by default causes the API call to fail
+    # 'mask': {
+    #     'type': str,
+    #     'required': False,
+    #     'default': ''
+    # },
     'mask_blur_x': {
         'type': int,
         'required': False,
@@ -224,7 +225,7 @@ IMG2IMG_SCHEMA = {
     'inpaint_full_res': {
         'type': bool,
         'required': False,
-        'default': True
+        'default': False
     },
     'inpaint_full_res_padding': {
         'type': int,
@@ -234,12 +235,12 @@ IMG2IMG_SCHEMA = {
     'inpainting_mask_invert': {
         'type': int,
         'required': False,
-        'default': 0
+        'default': 1
     },
     'initial_noise_multiplier': {
         'type': int,
         'required': False,
-        'default': 0
+        'default': 1
     },
     'latent_mask': {
         'type': str,
