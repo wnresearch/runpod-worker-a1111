@@ -60,6 +60,7 @@ was successful.
 * [Get VAE](docs/api/get-vae.md)
 * [Image to Image](docs/api/img2img.md)
 * [Image to Image with ControlNet](docs/api/img2img-controlnet.md)
+* [Interrogate](docs/api/interrogate.md)
 * [Refresh Checkpoints](docs/api/refresh-checkpoints.md)
 * [Refresh Loras](docs/api/refresh-loras.md)
 * [Set Model](docs/api/set-model.md)
