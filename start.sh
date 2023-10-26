@@ -14,6 +14,7 @@ export PYTHONUNBUFFERED=true
 export HF_HOME="/workspace"
 python /workspace/stable-diffusion-webui/webui.py \
   --xformers \
+  --no-half-vae \
   --skip-python-version-check \
   --skip-torch-cuda-test \
   --skip-install \
