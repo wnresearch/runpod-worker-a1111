@@ -198,7 +198,7 @@ TXT2IMG_SCHEMA = {
         'default': 0
     },
     'hr_scale': {
-        'type': int,
+        'type': float,
         'required': False,
         'default': 2
     },
