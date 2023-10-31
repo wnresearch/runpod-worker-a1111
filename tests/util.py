@@ -11,6 +11,7 @@ OUTPUT_FORMAT = 'JPEG'
 STATUS_IN_QUEUE = 'IN_QUEUE'
 STATUS_IN_PROGRESS = 'IN_PROGRESS'
 STATUS_FAILED = 'FAILED'
+STATUS_CANCELLED = 'CANCELLED'
 STATUS_COMPLETED = 'COMPLETED'
 STATUS_TIMED_OUT = 'TIMED_OUT'
 
@@ -108,6 +109,10 @@ def post_request(payload):
                         if job_status == STATUS_IN_QUEUE or job_status == STATUS_IN_PROGRESS:
                             print(f'RunPod request {request_id} is {job_status}, sleeping for 5 seconds...')
                             time.sleep(5)
+                        elif job_status == STATUS_CANCELLED:
+                            request_in_queue = False
+                            print(f'RunPod request {request_id} cancelled')
+                            print(json.dumps(resp_json, indent=4, default=str))
                         elif job_status == STATUS_FAILED:
                             request_in_queue = False
                             print(f'RunPod request {request_id} failed')
