@@ -31,8 +31,8 @@ if __name__ == '__main__':
                             '0',                                #2 Comma separated face number(s) from swap-source image
                             '0',                                #3 Comma separated face number(s) for target image (result)
                             '/runpod-volume/stable-diffusion-webui/models/insightface/inswapper_128.onnx', #4 model path
-                            'CodeFormer',                       #4 Restore Face: None; CodeFormer; GFPGAN
-                            1,                                  #5 Restore visibility value
+                            'CodeFormer',                       #5 Restore Face: None; CodeFormer; GFPGAN
+                            1,                                  #6 Restore visibility value
                             True,                               #7 Restore face -> Upscale
                             'lollypop',                         #8 Upscaler (type 'None' if doesn't need), see full list here: http://127.0.0.1:7860/sdapi/v1/script-info -> reactor -> sec.8
                             2,                                  #9 Upscaler scale value
