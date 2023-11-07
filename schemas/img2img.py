@@ -192,7 +192,7 @@ IMG2IMG_SCHEMA = {
         'default': 0
     },
     'image_cfg_scale': {
-        'type': int,
+        'type': float,
         'required': False,
         'default': 0
     },
