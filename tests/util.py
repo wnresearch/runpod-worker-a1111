@@ -54,6 +54,36 @@ def handle_response(resp_json, timer):
     print(f'Total time taken for RunPod Serverless API call {total_time} seconds')
 
 
+def get_endpoint_details():
+    env = dotenv_values('.env')
+    api_key = env.get('RUNPOD_API_KEY', None)
+    endpoint_id = env.get('RUNPOD_ENDPOINT_ID', None)
+
+    return api_key, endpoint_id
+
+
+def cancel_task(task_id):
+    api_key, endpoint_id = get_endpoint_details()
+
+    return requests.post(
+        f'https://api.runpod.ai/v2/{endpoint_id}/cancel/{task_id}',
+        headers={
+            'Authorization': f'Bearer {api_key}'
+        }
+    )
+
+
+def purge_queue():
+    api_key, endpoint_id = get_endpoint_details()
+
+    return requests.post(
+        f'https://api.runpod.ai/v2/{endpoint_id}/purge-queue',
+        headers={
+            'Authorization': f'Bearer {api_key}'
+        }
+    )
+
+
 def post_request(payload):
     timer = Timer()
     env = dotenv_values('.env')
