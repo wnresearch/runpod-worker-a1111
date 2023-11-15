@@ -54,11 +54,25 @@ wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/
 python3 -m install-automatic --skip-torch-cuda-test
 
 # Clone the ControlNet Extension
-git clone https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
+cd /workspace/stable-diffusion-webui
+git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
+
+# Clone the ReActor Extension
+git clone --depth=1 https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
 
 # Install dependencies for ControlNet
-cd extensions/sd-webui-controlnet
+cd /workspace/stable-diffusion-webui/extensions/sd-webui-controlnet
 pip3 install -r requirements.txt
+
+# Install dependencies for ReActor
+cd /workspace/stable-diffusion-webui/extensions/sd-webui-reactor
+pip3 install -r requirements.txt
+pip3 install onnxruntime-gpu
+
+# Install the model for ReActor
+mkdir -p /workspace/stable-diffusion-webui/models/insightface
+cd /workspace/stable-diffusion-webui/models/insightface
+wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
 ```
 2. Install the Serverless dependencies:
 ```bash
