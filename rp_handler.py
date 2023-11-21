@@ -118,7 +118,7 @@ def handler(event):
         payload = validated_payload
 
     try:
-        logger.log(f'Sending {method} request to: /{endpoint}')
+        logger.info(f'Sending {method} request to: /{endpoint}')
 
         if method == 'GET':
             response = send_get_request(endpoint)
@@ -137,8 +137,8 @@ def handler(event):
 
 if __name__ == "__main__":
     wait_for_service(f'{BASE_URI}/sdapi/v1/sd-models')
-    logger.log('Automatic1111 API is ready', 'INFO')
-    logger.log('Starting RunPod Serverless...', 'INFO')
+    logger.info('Automatic1111 API is ready')
+    logger.info('Starting RunPod Serverless...')
     runpod.serverless.start(
         {
             'handler': handler
