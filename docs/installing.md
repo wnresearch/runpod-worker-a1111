@@ -73,6 +73,9 @@ pip3 install onnxruntime-gpu
 mkdir -p /workspace/stable-diffusion-webui/models/insightface
 cd /workspace/stable-diffusion-webui/models/insightface
 wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
+
+# Configure ReActor to use the GPU instead of CPU
+echo "CUDA" > /workspace/stable-diffusion-webui/extensions/sd-webui-reactor/last_device.txt
 ```
 2. Install the Serverless dependencies:
 ```bash

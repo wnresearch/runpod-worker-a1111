@@ -49,6 +49,9 @@ mkdir -p /workspace/stable-diffusion-webui/models/insightface
 cd /workspace/stable-diffusion-webui/models/insightface
 wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
 
+echo "Configuring ReActor to use the GPU instead of CPU"
+echo "CUDA" > /workspace/stable-diffusion-webui/extensions/sd-webui-reactor/last_device.txt
+
 echo "Installing RunPod Serverless dependencies"
 cd /workspace/stable-diffusion-webui
 pip3 install huggingface_hub runpod
