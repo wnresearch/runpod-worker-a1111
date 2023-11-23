@@ -84,7 +84,7 @@ def purge_queue():
     )
 
 
-def post_request(payload):
+def post_request(payload, runtype='run'):
     timer = Timer()
     env = dotenv_values('.env')
     runpod_api_key = env.get('RUNPOD_API_KEY', None)
@@ -96,7 +96,7 @@ def post_request(payload):
         base_url = f'http://127.0.0.1:8000'
 
     r = requests.post(
-        f'{base_url}/runsync',
+        f'{base_url}/{runtype}',
         headers={
             'Authorization': f'Bearer {runpod_api_key}'
         },

@@ -46,6 +46,7 @@ if __name__ == '__main__':
                             0.8,                                #17 CodeFormer Weight (0 = maximum effect, 1 = minimum effect), 0.5 - by default
                             False,                              #18 Source Image Hash Check, True - by default
                             False,                              #19 Target Image Hash Check, False - by default
+                            'CUDA'                              #20 #20 CPU or CUDA (if you have it), CPU - by default
                         ]
                     }
                 }
