@@ -45,7 +45,7 @@ TXT2IMG_SCHEMA = {
         'constraints': lambda sampler_name: sampler_name in [
             'DPM++ 2M Karras',
             'DPM++ SDE Karras',
-            'DPM++ 2M SDE Exponential'
+            'DPM++ 2M SDE Exponential',
             'DPM++ 2M SDE Karras',
             'Euler a',
             'Euler',
@@ -257,7 +257,7 @@ TXT2IMG_SCHEMA = {
         'constraints': lambda sampler_index: sampler_index in [
             'DPM++ 2M Karras',
             'DPM++ SDE Karras',
-            'DPM++ 2M SDE Exponential'
+            'DPM++ 2M SDE Exponential',
             'DPM++ 2M SDE Karras',
             'Euler a',
             'Euler',
