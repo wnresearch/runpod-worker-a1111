@@ -98,8 +98,8 @@ def validate_payload(job):
 
 
 def download(job):
-    source_url = job['input']['source_url']
-    download_path = job['input']['download_path']
+    source_url = job['input']['payload']['source_url']
+    download_path = job['input']['payload']['download_path']
     process_id = os.getpid()
     temp_path = f"{download_path}.{process_id}"
 
@@ -122,11 +122,17 @@ def download(job):
 
 
 def sync(job):
-    repo_id = job['input']['repo_id']
-    sync_path = job['input']['sync_path']
+    repo_id = job['input']['payload']['repo_id']
+    sync_path = job['input']['payload']['sync_path']
+    hf_token = job['input']['payload']['hf_token']
 
     api = HfApi()
-    models = api.list_repo_files(repo_id)
+
+    models = api.list_repo_files(
+        repo_id=repo_id,
+        token=hf_token
+    )
+
     synced_count = 0
     synced_files = []
 
@@ -138,6 +144,7 @@ def sync(job):
             logger.info(f'Syncing {model} to {dest_path}', job['id'])
 
             uri = api.hf_hub_download(
+                token=hf_token,
                 repo_id=repo_id,
                 filename=model,
                 local_dir=sync_path,
@@ -188,9 +195,9 @@ def handler(job):
         logger.info(f'Sending {method} request to: /{endpoint}', job['id'])
 
         if endpoint == 'v1/download':
-            response = download(job)
+            return download(job)
         elif endpoint == 'v1/sync':
-            response = sync(job)
+            return sync(job)
         elif method == 'GET':
             response = send_get_request(endpoint)
         elif method == 'POST':

@@ -84,7 +84,7 @@ def purge_queue():
     )
 
 
-def post_request(payload, runtype='run'):
+def post_request(payload, runtype='runsync'):
     timer = Timer()
     env = dotenv_values('.env')
     runpod_api_key = env.get('RUNPOD_API_KEY', None)
