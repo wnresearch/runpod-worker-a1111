@@ -1,4 +1,4 @@
-# Set model
+# Set Model
 
 ## Request
 

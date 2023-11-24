@@ -43,33 +43,40 @@ was successful.
 
 ### RunPod API Examples
 
-* [Get ControlNet Models](docs/api/get-controlnet-models.md)
-* [Get Embeddings](docs/api/get-embeddings.md)
-* [Get Face Restorers](docs/api/get-face-restorers.md)
-* [Get Hypernetworks](docs/api/get-hypernetworks.md)
-* [Get Loras](docs/api/get-loras.md)
-* [Get Memory](docs/api/get-memory.md)
-* [Get Models](docs/api/get-models.md)
-* [Get Options](docs/api/get-options.md)
-* [Get Prompt Styles](docs/api/get-prompt-styles.md)
-* [Get Real-ESRGAN Models](docs/api/get-realesrgan-models.md)
-* [Get Samplers](docs/api/get-samplers.md)
-* [Get Script Info](docs/api/get-script-info.md)
-* [Get Scripts](docs/api/get-scripts.md)
-* [Get Upscalers](docs/api/get-upscalers.md)
-* [Get VAE](docs/api/get-vae.md)
-* [Image to Image](docs/api/img2img.md)
-* [Image to Image with ControlNet](docs/api/img2img-controlnet.md)
-* [Interrogate](docs/api/interrogate.md)
-* [Refresh Checkpoints](docs/api/refresh-checkpoints.md)
-* [Refresh Loras](docs/api/refresh-loras.md)
-* [Set Model](docs/api/set-model.md)
-* [Set VAE](docs/api/set-vae.md)
-* [Text to Image](docs/api/txt2img.md)
+#### A1111 APIs
+
+* [Get ControlNet Models](docs/api/a1111/get-controlnet-models.md)
+* [Get Embeddings](docs/api/a1111/get-embeddings.md)
+* [Get Face Restorers](docs/api/a1111/get-face-restorers.md)
+* [Get Hypernetworks](docs/api/a1111/get-hypernetworks.md)
+* [Get Loras](docs/api/a1111/get-loras.md)
+* [Get Memory](docs/api/a1111/get-memory.md)
+* [Get Models](docs/api/a1111/get-models.md)
+* [Get Options](docs/api/a1111/get-options.md)
+* [Get Prompt Styles](docs/api/a1111/get-prompt-styles.md)
+* [Get Real-ESRGAN Models](docs/api/a1111/get-realesrgan-models.md)
+* [Get Samplers](docs/api/a1111/get-samplers.md)
+* [Get Script Info](docs/api/a1111/get-script-info.md)
+* [Get Scripts](docs/api/a1111/get-scripts.md)
+* [Get Upscalers](docs/api/a1111/get-upscalers.md)
+* [Get VAE](docs/api/a1111/get-vae.md)
+* [Image to Image](docs/api/a1111/img2img.md)
+* [Image to Image with ControlNet](docs/api/a1111/img2img-controlnet.md)
+* [Interrogate](docs/api/a1111/interrogate.md)
+* [Refresh Checkpoints](docs/api/a1111/refresh-checkpoints.md)
+* [Refresh Loras](docs/api/a1111/refresh-loras.md)
+* [Set Model](docs/api/a1111/set-model.md)
+* [Set VAE](docs/api/a1111/set-vae.md)
+* [Text to Image](docs/api/a1111/txt2img.md)
+
+#### Helper APIs
+
+* [File Download](docs/api/helper/download.md)
+* [Huggingface Sync](docs/api/helper/sync.md)
 
 ### Optional Webhook Callbacks
 
-You can optionally [Enable a Webhook](docs/api/webhook.md).
+You can optionally [Enable a Webhook](docs/api/helper/webhook.md).
 
 ### Endpoint Status Codes
 
