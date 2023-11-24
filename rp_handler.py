@@ -1,14 +1,18 @@
+import os
 import time
 import requests
 import runpod
 from runpod.serverless.utils.rp_validator import validate
 from runpod.serverless.modules.rp_logger import RunPodLogger
 from requests.adapters import HTTPAdapter, Retry
+from huggingface_hub import HfApi
 from schemas.input import INPUT_SCHEMA
 from schemas.api import API_SCHEMA
 from schemas.img2img import IMG2IMG_SCHEMA
 from schemas.txt2img import TXT2IMG_SCHEMA
 from schemas.interrogate import INTERROGATE_SCHEMA
+from schemas.sync import SYNC_SCHEMA
+from schemas.download import DOWNLOAD_SCHEMA
 
 BASE_URI = 'http://127.0.0.1:3000'
 TIMEOUT = 600
@@ -20,7 +24,7 @@ logger = RunPodLogger()
 
 
 # ---------------------------------------------------------------------------- #
-#                              Automatic Functions                             #
+#                               Utility Functions                              #
 # ---------------------------------------------------------------------------- #
 
 def wait_for_service(url):
@@ -57,55 +61,118 @@ def send_post_request(endpoint, payload):
     )
 
 
-def validate_input(event):
-    return validate(event['input'], INPUT_SCHEMA)
+def validate_input(job):
+    return validate(job['input'], INPUT_SCHEMA)
 
 
-def validate_api(event):
-    api = event['input']['api']
+def validate_api(job):
+    api = job['input']['api']
     api['endpoint'] = api['endpoint'].lstrip('/')
 
     return validate(api, API_SCHEMA)
 
 
-def validate_payload(event):
-    method = event['input']['api']['method']
-    endpoint = event['input']['api']['endpoint']
-    payload = event['input']['payload']
+def validate_payload(job):
+    method = job['input']['api']['method']
+    endpoint = job['input']['api']['endpoint']
+    payload = job['input']['payload']
     validated_input = payload
 
-    if endpoint == 'sdapi/v1/txt2img':
-        logger.debug(f'Validating /{endpoint} payload')
+    if endpoint == 'v1/sync':
+        logger.info(f'Validating /{endpoint} payload', job['id'])
+        validated_input = validate(payload, SYNC_SCHEMA)
+    elif endpoint == 'v1/download':
+        logger.info(f'Validating /{endpoint} payload', job['id'])
+        validated_input = validate(payload, DOWNLOAD_SCHEMA)
+    elif endpoint == 'sdapi/v1/txt2img':
+        logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, TXT2IMG_SCHEMA)
     elif endpoint == 'sdapi/v1/img2img':
-        logger.debug(f'Validating /{endpoint} payload')
+        logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, IMG2IMG_SCHEMA)
     elif endpoint == 'sdapi/v1/interrogate' and method == 'POST':
-        logger.debug(f'Validating /{endpoint} payload')
+        logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, INTERROGATE_SCHEMA)
 
-    return endpoint, event['input']['api']['method'], validated_input
+    return endpoint, job['input']['api']['method'], validated_input
+
+
+def download(job):
+    source_url = job['input']['source_url']
+    download_path = job['input']['download_path']
+    process_id = os.getpid()
+    temp_path = f"{download_path}.{process_id}"
+
+    # Download the file and save it as a temporary file
+    with requests.get(source_url, stream=True) as r:
+        r.raise_for_status()
+        with open(temp_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+    # Rename the temporary file to the actual file name
+    os.rename(temp_path, download_path)
+    logger.info(f'{source_url} successfully downloaded to {download_path}', job['id'])
+
+    return {
+        'msg': 'Download successful',
+        'source_url': source_url,
+        'download_path': download_path
+    }
+
+
+def sync(job):
+    repo_id = job['input']['repo_id']
+    sync_path = job['input']['sync_path']
+
+    api = HfApi()
+    models = api.list_repo_files(repo_id)
+    synced_count = 0
+    synced_files = []
+
+    for model in models:
+        folder = os.path.dirname(model)
+        dest_path = f'{sync_path}/{model}'
+
+        if folder and not os.path.exists(dest_path):
+            logger.info(f'Syncing {model} to {dest_path}', job['id'])
+
+            uri = api.hf_hub_download(
+                repo_id=repo_id,
+                filename=model,
+                local_dir=sync_path,
+                local_dir_use_symlinks=False
+            )
+
+            if uri:
+                synced_count += 1
+                synced_files.append(dest_path)
+
+    return {
+        'synced_count': synced_count,
+        'synced_files': synced_files
+    }
 
 
 # ---------------------------------------------------------------------------- #
 #                                RunPod Handler                                #
 # ---------------------------------------------------------------------------- #
-def handler(event):
-    validated_input = validate_input(event)
+def handler(job):
+    validated_input = validate_input(job)
 
     if 'errors' in validated_input:
         return {
             'error': '\n'.join(validated_input['errors'])
         }
 
-    validated_api = validate_api(event)
+    validated_api = validate_api(job)
 
     if 'errors' in validated_api:
         return {
             'error': '\n'.join(validated_api['errors'])
         }
 
-    endpoint, method, validated_payload = validate_payload(event)
+    endpoint, method, validated_payload = validate_payload(job)
 
     if 'errors' in validated_payload:
         return {
@@ -118,9 +185,13 @@ def handler(event):
         payload = validated_payload
 
     try:
-        logger.info(f'Sending {method} request to: /{endpoint}')
+        logger.info(f'Sending {method} request to: /{endpoint}', job['id'])
 
-        if method == 'GET':
+        if endpoint == 'v1/download':
+            response = download(job)
+        elif endpoint == 'v1/sync':
+            response = sync(job)
+        elif method == 'GET':
             response = send_get_request(endpoint)
         elif method == 'POST':
             response = send_post_request(endpoint, payload)
@@ -130,8 +201,11 @@ def handler(event):
         if response.status_code == 200:
             return resp_json
         else:
+            logger.error(f'HTTP Status code: {response.status_code}', job['id'])
+            logger.error(f'Response: {response}', job['id'])
             raise Exception(resp_json)
     except Exception as e:
+        logger.error(f'An exception as raised: {e}')
         raise
 
 
