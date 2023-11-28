@@ -1,6 +1,7 @@
 import os
 import time
 import requests
+import traceback
 import runpod
 from runpod.serverless.utils.rp_validator import validate
 from runpod.serverless.modules.rp_logger import RunPodLogger
@@ -209,11 +210,14 @@ def handler(job):
             return resp_json
         else:
             logger.error(f'HTTP Status code: {response.status_code}', job['id'])
-            logger.error(f'Response: {response}', job['id'])
+            logger.error(f'Response: {response.text}', job['id'])
             raise Exception(resp_json)
     except Exception as e:
-        logger.error(f'An exception as raised: {e}')
-        raise
+        logger.error(f'An exception was raised: {e}')
+        return {
+            'error': traceback.format_exc(),
+            'refresh_worker': True
+        }
 
 
 if __name__ == "__main__":
