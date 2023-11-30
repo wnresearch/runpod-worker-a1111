@@ -42,7 +42,7 @@ python3 -V
 
 # Create and activate venv
 cd stable-diffusion-webui
-python -m venv /workspace/venv
+python3 -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 # Install Torch and xformers
@@ -60,6 +60,9 @@ git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensio
 # Clone the ReActor Extension
 git clone --depth=1 https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
 
+# Clone the After Detailer Extension
+git clone --depth=1 https://github.com/Bing-su/adetailer.git extensions/adetailer
+
 # Install dependencies for ControlNet
 cd /workspace/stable-diffusion-webui/extensions/sd-webui-controlnet
 pip3 install -r requirements.txt
@@ -68,6 +71,10 @@ pip3 install -r requirements.txt
 cd /workspace/stable-diffusion-webui/extensions/sd-webui-reactor
 pip3 install -r requirements.txt
 pip3 install onnxruntime-gpu
+
+# Install dependencies for After Detailer
+cd /workspace/stable-diffusion-webui/extensions/adetailer
+python3 -m install
 
 # Install the model for ReActor
 mkdir -p /workspace/stable-diffusion-webui/models/insightface

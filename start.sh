@@ -24,7 +24,7 @@ if [ -f "/workspace/venv/bin/activate" ]; then
       --disable-safe-unpickle \
       --port 3000 \
       --api \
-      --nowebui \
+      --listen \
       --skip-version-check \
       --no-hashing \
       --no-download-sd-model > /workspace/logs/webui.log 2>&1 &

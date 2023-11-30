@@ -15,18 +15,18 @@ apt -y upgrade
 
 echo "Creating and activating venv"
 cd stable-diffusion-webui
-python -m venv /workspace/venv
+python3 -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 echo "Installing Torch"
-pip install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 echo "Installing xformers"
-pip install --no-cache-dir xformers==0.0.22
+pip3 install --no-cache-dir xformers==0.0.22
 
 echo "Installing A1111 Web UI"
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py
-python -m install-automatic --skip-torch-cuda-test
+python3 -m install-automatic --skip-torch-cuda-test
 
 echo "Cloning ControlNet extension repo"
 cd /workspace/stable-diffusion-webui
@@ -35,14 +35,21 @@ git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensio
 echo "Cloning the ReActor extension repo"
 git clone --depth=1 https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
 
+echo "Cloning the After Detailer extension repo"
+git clone --depth=1 https://github.com/Bing-su/adetailer.git extensions/adetailer
+
 echo "Installing dependencies for ControlNet"
 cd /workspace/stable-diffusion-webui/extensions/sd-webui-controlnet
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
-echo "Install dependencies for ReActor"
+echo "Installing dependencies for ReActor"
 cd /workspace/stable-diffusion-webui/extensions/sd-webui-reactor
 pip3 install -r requirements.txt
 pip3 install onnxruntime-gpu
+
+echo "Installing dependencies for After Detailer"
+cd /workspace/stable-diffusion-webui/extensions/adetailer
+python3 -m install
 
 echo "Installing the model for ReActor"
 mkdir -p /workspace/stable-diffusion-webui/models/insightface

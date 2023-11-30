@@ -47,4 +47,4 @@ COPY schemas /schemas
 
 # Start the container
 RUN chmod +x /start.sh
-CMD /start.sh
+ENTRYPOINT /start.sh
