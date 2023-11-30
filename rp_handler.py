@@ -17,6 +17,7 @@ from schemas.download import DOWNLOAD_SCHEMA
 
 BASE_URI = 'http://127.0.0.1:3000'
 TIMEOUT = 600
+POST_RETRIES = 3
 
 session = requests.Session()
 retries = Retry(total=10, backoff_factor=0.1, status_forcelist=[502, 503, 504])
@@ -54,12 +55,22 @@ def send_get_request(endpoint):
     )
 
 
-def send_post_request(endpoint, payload):
-    return session.post(
+def send_post_request(endpoint, payload, job_id, retry=0):
+    response = session.post(
         url=f'{BASE_URI}/{endpoint}',
         json=payload,
         timeout=TIMEOUT
     )
+
+    # Retry the post request in case the model has not completed loading yet
+    if response.status_code == 404:
+        if retry < POST_RETRIES:
+            retry += 1
+            logger.warn(f'Received HTTP 404 from endpoint: {endpoint}, Retrying: {retry}', job_id)
+            time.sleep(0.2)
+            send_post_request(endpoint, payload, job_id, retry)
+
+    return response
 
 
 def validate_input(job):
@@ -202,7 +213,7 @@ def handler(job):
         elif method == 'GET':
             response = send_get_request(endpoint)
         elif method == 'POST':
-            response = send_post_request(endpoint, payload)
+            response = send_post_request(endpoint, payload, job['id'])
 
         resp_json = response.json()
 
@@ -225,7 +236,7 @@ def handler(job):
 
 if __name__ == "__main__":
     wait_for_service(f'{BASE_URI}/sdapi/v1/sd-models')
-    logger.info('Automatic1111 API is ready')
+    logger.info('A1111 Stable Diffusion API is ready')
     logger.info('Starting RunPod Serverless...')
     runpod.serverless.start(
         {

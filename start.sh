@@ -13,7 +13,7 @@ if [ -f "/workspace/venv/bin/activate" ]; then
     export LD_PRELOAD="${TCMALLOC}"
     export PYTHONUNBUFFERED=true
     export HF_HOME="/workspace"
-    python /workspace/stable-diffusion-webui/webui.py \
+    python3 /workspace/stable-diffusion-webui/webui.py \
       --xformers \
       --no-half-vae \
       --skip-python-version-check \
@@ -24,7 +24,7 @@ if [ -f "/workspace/venv/bin/activate" ]; then
       --disable-safe-unpickle \
       --port 3000 \
       --api \
-      --listen \
+      --nowebui \
       --skip-version-check \
       --no-hashing \
       --no-download-sd-model > /workspace/logs/webui.log 2>&1 &
