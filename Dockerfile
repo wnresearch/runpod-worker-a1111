@@ -39,7 +39,7 @@ RUN apt update && \
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 # Install Worker dependencies
-RUN pip install requests runpod huggingface_hub
+RUN pip install requests runpod>=1.3.7 huggingface_hub
 
 # Add RunPod Handler and Docker container start script
 COPY start.sh rp_handler.py ./

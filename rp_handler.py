@@ -211,7 +211,10 @@ def handler(job):
         else:
             logger.error(f'HTTP Status code: {response.status_code}', job['id'])
             logger.error(f'Response: {response.text}', job['id'])
-            raise Exception(resp_json)
+            return {
+                'error': resp_json,
+                'refresh_worker': True
+            }
     except Exception as e:
         logger.error(f'An exception was raised: {e}')
         return {
