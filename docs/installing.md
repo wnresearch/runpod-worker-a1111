@@ -26,8 +26,8 @@ chmod +x install.sh
 
 > [!NOTE]
 > If you have previously installed A1111 on your Network volume,
-> but want to install the After Detailer, you will need to reinstall
-> everything for the After Detailer extension to function correctly.
+> but want to install the After Detailer, you can follow the
+> instructions [here](./installing-adetailer.md).
 
 You only need to complete the steps below if you did not run the
 automatic installation script above.
