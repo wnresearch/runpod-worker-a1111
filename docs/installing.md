@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > If you have previously installed A1111 on your Network volume,
-> but want to install the After Detailer, you can follow the
+> but want to install the After Detailer extension, you can follow the
 > instructions [here](./installing-adetailer.md).
 
 1. [Create a RunPod Account](https://runpod.io?ref=2xxro4sy).
