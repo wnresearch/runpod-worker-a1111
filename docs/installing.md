@@ -1,5 +1,10 @@
 # Install Automatic1111 Web UI on your Network Volume
 
+> [!NOTE]
+> If you have previously installed A1111 on your Network volume,
+> but want to install the After Detailer, you can follow the
+> instructions [here](./installing-adetailer.md).
+
 1. [Create a RunPod Account](https://runpod.io?ref=2xxro4sy).
 2. Create a [RunPod Network Volume](https://www.runpod.io/console/user/storage).
 3. Attach the Network Volume to a Secure Cloud [GPU pod](https://www.runpod.io/console/gpu-secure-cloud).
@@ -23,11 +28,6 @@ chmod +x install.sh
 ```
 
 ## Manual Installation
-
-> [!NOTE]
-> If you have previously installed A1111 on your Network volume,
-> but want to install the After Detailer, you can follow the
-> instructions [here](./installing-adetailer.md).
 
 You only need to complete the steps below if you did not run the
 automatic installation script above.
