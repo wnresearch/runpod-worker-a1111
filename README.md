@@ -68,6 +68,8 @@ was successful.
 * [Set Model](docs/api/a1111/set-model.md)
 * [Set VAE](docs/api/a1111/set-vae.md)
 * [Text to Image](docs/api/a1111/txt2img.md)
+* [Text to Image with ReActor](docs/api/a1111/txt2img-reactor.md)
+* [Text to Image with ADetailer](docs/api/a1111/txt2img-adetailer.md)
 
 #### Helper APIs
 
