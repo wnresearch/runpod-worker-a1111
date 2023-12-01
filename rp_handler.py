@@ -215,19 +215,19 @@ def handler(job):
         elif method == 'POST':
             response = send_post_request(endpoint, payload, job['id'])
 
-        resp_json = response.json()
-
         if response.status_code == 200:
-            return resp_json
+            return response.json()
         else:
             logger.error(f'HTTP Status code: {response.status_code}', job['id'])
             logger.error(f'Response: {response.text}', job['id'])
+
             return {
-                'error': resp_json,
+                'error': response.text,
                 'refresh_worker': True
             }
     except Exception as e:
         logger.error(f'An exception was raised: {e}')
+
         return {
             'error': traceback.format_exc(),
             'refresh_worker': True
