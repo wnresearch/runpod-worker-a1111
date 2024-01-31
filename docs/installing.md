@@ -114,11 +114,16 @@ cd /workspace/stable-diffusion-webui/models/ControlNet
 wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth
 wget https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffusers_xl_canny_full.safetensors
 ```
-6. Create logs directory:
+6. Download InstantID ControlNet models:
+```bash
+wget -O ip-adapter_instant_id_sdxl.bin "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true"
+wget -O control_instant_id_sdxl.safetensors"https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
+```
+7. Create logs directory:
 ```bash
 mkdir -p /workspace/logs
 ```
-7. Install config files:
+8. Install config files:
 ```bash
 cd /workspace/stable-diffusion-webui
 rm webui-user.sh config.json ui-config.json
@@ -126,16 +131,16 @@ wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/config.json
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/ui-config.json
 ```
-8. Run the Web UI:
+9. Run the Web UI:
 ```bash
 deactivate
 export HF_HOME="/workspace"
 cd /workspace/stable-diffusion-webui
 ./webui.sh -f
 ```
-9. Wait for the Web UI to start up, and download the models. You shoud
+10. Wait for the Web UI to start up, and download the models. You shoud
     see something like this when it is ready:
 ```
 Model loaded in 16.9s (calculate hash: 8.0s, load weights from disk: 0.4s, create model: 2.1s, apply weights to model: 2.6s, apply half(): 2.6s, move model to device: 0.7s, calculate empty prompt: 0.3s).
 ```
-10. Press Ctrl-C to exit, and then you can terminate the pod.
+11. Press Ctrl-C to exit, and then you can terminate the pod.

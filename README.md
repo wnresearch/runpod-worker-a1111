@@ -70,6 +70,7 @@ was successful.
 * [Text to Image](docs/api/a1111/txt2img.md)
 * [Text to Image with ReActor](docs/api/a1111/txt2img-reactor.md)
 * [Text to Image with ADetailer](docs/api/a1111/txt2img-adetailer.md)
+* [Text to Image with InstantID](docs/api/a1111/txt2img-instantid.md)
 
 #### Helper APIs
 
