@@ -1,8 +1,9 @@
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    PIP_PREFER_BINARY=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=on \
+    SHELL=/bin/bash
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -39,7 +40,7 @@ RUN apt update && \
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 # Install Worker dependencies
-RUN pip install requests runpod>=1.3.7 huggingface_hub
+RUN pip install requests runpod huggingface_hub
 
 # Add RunPod Handler and Docker container start script
 COPY start.sh rp_handler.py ./

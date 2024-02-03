@@ -222,7 +222,7 @@ def handler(job):
             logger.error(f'Response: {response.text}', job['id'])
 
             return {
-                'error': response.text,
+                'error': response.json(),
                 'refresh_worker': True
             }
     except Exception as e:
