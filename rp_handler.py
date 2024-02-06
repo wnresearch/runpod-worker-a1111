@@ -221,8 +221,10 @@ def handler(job):
             logger.error(f'HTTP Status code: {response.status_code}', job['id'])
             logger.error(f'Response: {response.text}', job['id'])
 
+            # This needs to be response.text and not response.json()
+            # otherwise the job returns as COMPLETED and has no output.
             return {
-                'error': response.json(),
+                'error': response.text,
                 'refresh_worker': True
             }
     except Exception as e:
