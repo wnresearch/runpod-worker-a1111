@@ -222,7 +222,8 @@ def handler(job):
             logger.error(f'Response: {response.text}', job['id'])
 
             # This needs to be response.text and not response.json()
-            # otherwise the job returns as COMPLETED and has no output.
+            # otherwise the job returns as COMPLETED and has no output,
+            # because the RunPod SDK expects a string and not a dict.
             return {
                 'error': response.text,
                 'refresh_worker': True
