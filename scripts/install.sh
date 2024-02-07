@@ -33,7 +33,8 @@ cd /workspace/stable-diffusion-webui
 git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
 
 echo "Cloning the ReActor extension repo"
-git clone --depth=1 https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
+git clone https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
+git checkout v0.6.1
 
 echo "Cloning the After Detailer extension repo"
 git clone --depth=1 https://github.com/Bing-su/adetailer.git extensions/adetailer

@@ -9,6 +9,14 @@ https://github.com/AUTOMATIC1111/stable-diffusion-webui) for inference.
 The model(s) for inference will be loaded from a RunPod
 Network Volume.
 
+## Extensions
+
+This worker includes the following A1111 extensions:
+
+1. [ControlNet](https://github.com/Mikubill/sd-webui-controlnet)
+2. [ReActor](https://github.com/Gourieff/sd-webui-reactor)
+3. [ADetailer](https://github.com/Bing-su/adetailer)
+
 ## Testing
 
 1. [Local Testing](docs/testing/local.md)
