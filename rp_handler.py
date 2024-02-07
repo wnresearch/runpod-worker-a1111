@@ -219,7 +219,7 @@ def handler(job):
             return response.json()
         else:
             logger.error(f'HTTP Status code: {response.status_code}', job['id'])
-            logger.error(f'Response: {response.text}', job['id'])
+            logger.error(f'Response: {response.json()}', job['id'])
 
             return {
                 'error': f'A1111 status code: {response.status_code}',
