@@ -29,6 +29,7 @@ RUN apt update && \
       libxrender1 \
       libxext6 \
       ffmpeg \
+      bc \
       libgoogle-perftools4 \
       libtcmalloc-minimal4 \
       procps && \
