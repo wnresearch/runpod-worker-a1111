@@ -13,16 +13,19 @@ echo "Installing Ubuntu updates"
 apt update
 apt -y upgrade
 
+echo "Installing bc package"
+apt -y install bc
+
 echo "Creating and activating venv"
 cd stable-diffusion-webui
 python3 -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 echo "Installing Torch"
-pip3 install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 echo "Installing xformers"
-pip3 install --no-cache-dir xformers==0.0.22
+pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
 
 echo "Installing A1111 Web UI"
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py

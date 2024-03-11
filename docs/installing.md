@@ -42,6 +42,9 @@ git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 apt update
 apt -y upgrade
 
+# Install bc package
+apt -y install bc
+
 # Ensure Python version is 3.10.12
 python3 -V
 
@@ -51,8 +54,8 @@ python3 -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 # Install Torch and xformers
-pip3 install --no-cache-dir torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip3 install --no-cache-dir xformers==0.0.22
+pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
 
 # Install A1111 Web UI
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py
@@ -64,7 +67,6 @@ git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensio
 
 # Clone the ReActor Extension
 git clone https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
-git checkout v0.6.1
 
 # Clone the After Detailer Extension
 git clone --depth=1 https://github.com/Bing-su/adetailer.git extensions/adetailer
@@ -75,6 +77,7 @@ pip3 install -r requirements.txt
 
 # Install dependencies for ReActor
 cd /workspace/stable-diffusion-webui/extensions/sd-webui-reactor
+git checkout v0.6.1
 pip3 install -r requirements.txt
 pip3 install onnxruntime-gpu
 
@@ -118,7 +121,7 @@ wget https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffus
 6. Download InstantID ControlNet models:
 ```bash
 wget -O ip-adapter_instant_id_sdxl.bin "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true"
-wget -O control_instant_id_sdxl.safetensors"https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
+wget -O control_instant_id_sdxl.safetensors "https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
 ```
 7. Create logs directory:
 ```bash
