@@ -18,8 +18,8 @@
 
 You can run this automatic installation script which will
 automatically install all of the dependencies that get installed
-manually below, and then you don't need to follow any of the
-manual instructions.
+manually below, and then you don't need to follow most of the
+manual instructions, you can jump straight to steps 10 and 11.
 
 ```bash
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/scripts/install.sh
@@ -142,7 +142,7 @@ export HF_HOME="/workspace"
 cd /workspace/stable-diffusion-webui
 ./webui.sh -f
 ```
-10. Wait for the Web UI to start up, and download the models. You shoud
+10. Wait for the Web UI to start up, and download the models. You should
     see something like this when it is ready:
 ```
 Model loaded in 20.8s (calculate hash: 15.6s, create model: 3.5s, apply weights to model: 0.8s, apply half(): 0.1s, calculate empty prompt: 0.5s).
