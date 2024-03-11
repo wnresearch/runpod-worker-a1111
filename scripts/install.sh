@@ -100,7 +100,7 @@ wget https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffus
 
 echo "Downloading InstantID ControlNet models"
 wget -O ip-adapter_instant_id_sdxl.bin "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true"
-wget -O control_instant_id_sdxl.safetensors"https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
+wget -O control_instant_id_sdxl.safetensors "https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
 
 echo "Downloading Upscalers"
 mkdir -p /workspace/stable-diffusion-webui/models/ESRGAN
