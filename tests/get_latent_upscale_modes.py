@@ -7,7 +7,7 @@ if __name__ == '__main__':
         "input": {
             "api": {
                 "method": "GET",
-                "endpoint": "/sdapi/v1/latent-upscale-models"
+                "endpoint": "/sdapi/v1/latent-upscale-modes"
             },
             "payload": {}
         }

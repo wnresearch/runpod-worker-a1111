@@ -34,207 +34,179 @@
   "id": "sync-a27a8d9a-b244-4aff-907d-25d220ed00b9",
   "output": [
     {
-      "aliases": [
-        "k_euler_a",
-        "k_euler_ancestral"
-      ],
-      "name": "Euler a",
-      "options": {
-        "uses_ensd": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_euler"
-      ],
-      "name": "Euler",
-      "options": {}
-    },
-    {
-      "aliases": [
-        "k_lms"
-      ],
-      "name": "LMS",
-      "options": {}
-    },
-    {
-      "aliases": [
-        "k_heun"
-      ],
-      "name": "Heun",
-      "options": {
-        "second_order": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpm_2"
-      ],
-      "name": "DPM2",
-      "options": {
-        "discard_next_to_last_sigma": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpm_2_a"
-      ],
-      "name": "DPM2 a",
-      "options": {
-        "discard_next_to_last_sigma": "True",
-        "uses_ensd": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpmpp_2s_a"
-      ],
-      "name": "DPM++ 2S a",
-      "options": {
-        "second_order": "True",
-        "uses_ensd": "True"
-      }
-    },
-    {
+      "name": "DPM++ 2M",
       "aliases": [
         "k_dpmpp_2m"
       ],
-      "name": "DPM++ 2M",
-      "options": {}
-    },
-    {
-      "aliases": [
-        "k_dpmpp_sde"
-      ],
-      "name": "DPM++ SDE",
       "options": {
-        "brownian_noise": "True",
-        "second_order": "True"
+        "scheduler": "karras"
       }
     },
     {
+      "name": "DPM++ SDE",
       "aliases": [
-        "k_dpmpp_2m_sde_ka"
+        "k_dpmpp_sde"
       ],
-      "name": "DPM++ 2M SDE",
       "options": {
+        "scheduler": "karras",
+        "second_order": "True",
         "brownian_noise": "True"
       }
     },
     {
+      "name": "DPM++ 2M SDE",
+      "aliases": [
+        "k_dpmpp_2m_sde"
+      ],
+      "options": {
+        "scheduler": "exponential",
+        "brownian_noise": "True"
+      }
+    },
+    {
+      "name": "DPM++ 2M SDE Heun",
+      "aliases": [
+        "k_dpmpp_2m_sde_heun"
+      ],
+      "options": {
+        "scheduler": "exponential",
+        "brownian_noise": "True",
+        "solver_type": "heun"
+      }
+    },
+    {
+      "name": "DPM++ 2S a",
+      "aliases": [
+        "k_dpmpp_2s_a"
+      ],
+      "options": {
+        "scheduler": "karras",
+        "uses_ensd": "True",
+        "second_order": "True"
+      }
+    },
+    {
+      "name": "DPM++ 3M SDE",
+      "aliases": [
+        "k_dpmpp_3m_sde"
+      ],
+      "options": {
+        "scheduler": "exponential",
+        "discard_next_to_last_sigma": "True",
+        "brownian_noise": "True"
+      }
+    },
+    {
+      "name": "Euler a",
+      "aliases": [
+        "k_euler_a",
+        "k_euler_ancestral"
+      ],
+      "options": {
+        "uses_ensd": "True"
+      }
+    },
+    {
+      "name": "Euler",
+      "aliases": [
+        "k_euler"
+      ],
+      "options": {}
+    },
+    {
+      "name": "LMS",
+      "aliases": [
+        "k_lms"
+      ],
+      "options": {}
+    },
+    {
+      "name": "Heun",
+      "aliases": [
+        "k_heun"
+      ],
+      "options": {
+        "second_order": "True"
+      }
+    },
+    {
+      "name": "DPM2",
+      "aliases": [
+        "k_dpm_2"
+      ],
+      "options": {
+        "scheduler": "karras",
+        "discard_next_to_last_sigma": "True",
+        "second_order": "True"
+      }
+    },
+    {
+      "name": "DPM2 a",
+      "aliases": [
+        "k_dpm_2_a"
+      ],
+      "options": {
+        "scheduler": "karras",
+        "discard_next_to_last_sigma": "True",
+        "uses_ensd": "True",
+        "second_order": "True"
+      }
+    },
+    {
+      "name": "DPM fast",
       "aliases": [
         "k_dpm_fast"
       ],
-      "name": "DPM fast",
       "options": {
         "uses_ensd": "True"
       }
     },
     {
+      "name": "DPM adaptive",
       "aliases": [
         "k_dpm_ad"
       ],
-      "name": "DPM adaptive",
       "options": {
         "uses_ensd": "True"
       }
     },
     {
+      "name": "Restart",
       "aliases": [
-        "k_lms_ka"
+        "restart"
       ],
-      "name": "LMS Karras",
       "options": {
-        "scheduler": "karras"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpm_2_ka"
-      ],
-      "name": "DPM2 Karras",
-      "options": {
-        "discard_next_to_last_sigma": "True",
-        "scheduler": "karras",
-        "second_order": "True",
-        "uses_ensd": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpm_2_a_ka"
-      ],
-      "name": "DPM2 a Karras",
-      "options": {
-        "discard_next_to_last_sigma": "True",
-        "scheduler": "karras",
-        "second_order": "True",
-        "uses_ensd": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpmpp_2s_a_ka"
-      ],
-      "name": "DPM++ 2S a Karras",
-      "options": {
-        "scheduler": "karras",
-        "second_order": "True",
-        "uses_ensd": "True"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpmpp_2m_ka"
-      ],
-      "name": "DPM++ 2M Karras",
-      "options": {
-        "scheduler": "karras"
-      }
-    },
-    {
-      "aliases": [
-        "k_dpmpp_sde_ka"
-      ],
-      "name": "DPM++ SDE Karras",
-      "options": {
-        "brownian_noise": "True",
         "scheduler": "karras",
         "second_order": "True"
       }
     },
     {
-      "aliases": [
-        "k_dpmpp_2m_sde_ka"
-      ],
-      "name": "DPM++ 2M SDE Karras",
-      "options": {
-        "brownian_noise": "True",
-        "scheduler": "karras"
-      }
-    },
-    {
-      "aliases": [],
       "name": "DDIM",
-      "options": {
-        "default_eta_is_0": "True",
-        "no_sdxl": "True",
-        "uses_ensd": "True"
-      }
+      "aliases": [
+        "ddim"
+      ],
+      "options": {}
     },
     {
-      "aliases": [],
       "name": "PLMS",
-      "options": {
-        "no_sdxl": "True"
-      }
+      "aliases": [
+        "plms"
+      ],
+      "options": {}
     },
     {
-      "aliases": [],
       "name": "UniPC",
-      "options": {
-        "no_sdxl": "True"
-      }
+      "aliases": [
+        "unipc"
+      ],
+      "options": {}
+    },
+    {
+      "name": "LCM",
+      "aliases": [
+        "k_lcm"
+      ],
+      "options": {}
     }
   ],
   "status": "COMPLETED"

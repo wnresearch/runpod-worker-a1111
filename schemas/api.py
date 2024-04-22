@@ -18,7 +18,7 @@ API_SCHEMA = {
             'sdapi/v1/samplers',
             'sdapi/v1/schedulers',
             'sdapi/v1/upscalers',
-            'sdapi/v1/latent-upscale-models',
+            'sdapi/v1/latent-upscale-modes',
             'sdapi/v1/sd-models',
             'sdapi/v1/sd-vae',
             'sdapi/v1/hypernetworks',
