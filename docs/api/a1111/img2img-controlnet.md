@@ -29,9 +29,10 @@
       "cfg_scale": 7,
       "width": 480,
       "height": 640,
-      "sampler_name": "DPM++ SDE Karras",
-      "sampler_index": "DPM++ SDE Karras",
-      "restore_faces": False,
+      "sampler_name": "DPM++ SDE",
+      "sampler_index": "DPM++ SDE",
+      "scheduler": "karras",
+      "restore_faces": false,
       "alwayson_scripts": {
         "controlnet": {
           "args": [
@@ -40,7 +41,7 @@
               "model": "control_v11p_sd15_canny",
               "weight": 1,
               "resize_mode": "Crop and Resize",
-              "lowvram": False,
+              "lowvram": false,
               "processor_res": 512,
               "threshold_a": 75,
               "threshold_b": 75,
@@ -48,7 +49,7 @@
               "guidance_start": 0,
               "guidance_end": 1,
               "control_mode": "Balanced",
-              "pixel_perfect": False
+              "pixel_perfect": false
             }
           ]
         }

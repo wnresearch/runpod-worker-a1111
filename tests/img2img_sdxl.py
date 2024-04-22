@@ -30,8 +30,9 @@ if __name__ == '__main__':
                 "cfg_scale": 10,
                 "width": 960,
                 "height": 1280,
-                "sampler_name": "DPM++ SDE Karras",
-                "sampler_index": "DPM++ SDE Karras",
+                "sampler_name": "DPM++ SDE",
+                "sampler_index": "DPM++ SDE",
+                "scheduler": "karras",
                 "restore_faces": True
             }
         }

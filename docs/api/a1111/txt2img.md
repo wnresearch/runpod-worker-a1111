@@ -25,8 +25,9 @@
       "cfg_scale": 7,
       "width": 1024,
       "height": 1024,
-      "sampler_name": "DPM++ SDE Karras",
-      "sampler_index": "DPM++ SDE Karras",
+      "sampler_name": "DPM++ SDE",
+      "sampler_index": "DPM++ SDE",
+      "scheduler": "karras",
       "restore_faces": false
     }
   }

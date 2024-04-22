@@ -31,8 +31,9 @@ if __name__ == '__main__':
                 "denoising_strength": 0.05,
                 "hr_negative_prompt": "",
                 "hr_second_pass_steps": 0,
-                "sampler_name": "DPM++ SDE Karras",
-                "sampler_index": "DPM++ SDE Karras",
+                "sampler_name": "DPM++ SDE",
+                "sampler_index": "DPM++ SDE",
+                "scheduler": "karras",
                 "restore_faces": False,
                 "alwayson_scripts": {
                     "controlnet": {
