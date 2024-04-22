@@ -69,13 +69,16 @@ pip3 install huggingface_hub runpod
 
 echo "Downloading Deliberate v2 model"
 cd /workspace/stable-diffusion-webui/models/Stable-diffusion
-wget -O deliberate_v2.safetensors https://huggingface.co/XpucT/Deliberate/resolve/main/Deliberate_v2.safetensors
+wget https://huggingface.co/ashleykleynhans/a1111-models/resolve/main/Stable-diffusion/deliberate_v2.safetensors
 
 echo "Downloading SDXL base model"
 wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
 
 echo "Downloading SDXL Refiner"
 wget https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors
+
+echo "Downloading turboDiffusionXL v112 model"
+wget https://huggingface.co/ashleykleynhans/a1111-models/resolve/main/Stable-diffusion/turboDiffusionXL_v112.safetensors
 
 echo "Downloading SD 1.5 VAE"
 cd /workspace/stable-diffusion-webui/models/VAE
