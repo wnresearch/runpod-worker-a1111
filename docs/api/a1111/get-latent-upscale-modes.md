@@ -28,4 +28,30 @@
 ### RUNSYNC
 
 ```json
+{
+  "delayTime": 102,
+  "executionTime": 50,
+  "id": "sync-3af73110-258d-4c61-b74a-59e5dea03a31-e1",
+  "output": [
+    {
+      "name": "Latent"
+    },
+    {
+      "name": "Latent (antialiased)"
+    },
+    {
+      "name": "Latent (bicubic)"
+    },
+    {
+      "name": "Latent (bicubic antialiased)"
+    },
+    {
+      "name": "Latent (nearest)"
+    },
+    {
+      "name": "Latent (nearest-exact)"
+    }
+  ],
+  "status": "COMPLETED"
+}
 ```
