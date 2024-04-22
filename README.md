@@ -1,5 +1,12 @@
 <div align="center">
 
+> [!IMPORTANT]
+> A1111 1.9.0 API format has changed dramatically and is not
+> backwards compatible. You will need to ensure that you check
+> out the `2.5.0` release of this worker if you require backwards
+> compatibility, and also ensure that you are using A1111 1.8.0
+> and not version 1.9.0.
+
 # A1111 Stable Diffusion | RunPod Serverless Worker
 
 This is the source code for a [RunPod](https://runpod.io?ref=2xxro4sy)
