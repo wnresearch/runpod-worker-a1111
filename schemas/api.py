@@ -32,7 +32,8 @@ API_SCHEMA = {
             'sdapi/v1/refresh-loras',
             'sdapi/v1/interrogate',
             'v1/download',
-            'v1/sync'
+            'v1/sync',
+            'reactor/image'
         ]
     }
 }
