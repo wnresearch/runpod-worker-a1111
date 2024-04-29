@@ -34,6 +34,7 @@ python3 -m install-automatic --skip-torch-cuda-test
 echo "Cloning ControlNet extension repo"
 cd /workspace/stable-diffusion-webui
 git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
+git checkout 0b90426254debf78bfc09d88c064d2caf0935282
 
 echo "Cloning the ReActor extension repo"
 git clone https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
