@@ -8,6 +8,8 @@ rm -rf /workspace/venv
 echo "Cloning A1111 repo to /workspace"
 cd /workspace
 git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+cd stable-diffusion-webui
+git checkout tags/v1.9.4
 
 echo "Installing Ubuntu updates"
 apt update
@@ -17,15 +19,14 @@ echo "Installing bc and aria2 Ubuntu packages"
 apt -y install bc aria2
 
 echo "Creating and activating venv"
-cd stable-diffusion-webui
 python3 -m venv /workspace/venv
 source /workspace/venv/bin/activate
 
 echo "Installing Torch"
-pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir torch==2.3.1+cu121 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 echo "Installing xformers"
-pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
+pip3 install --no-cache-dir xformers==0.0.27 --index-url https://download.pytorch.org/whl/cu121
 
 echo "Installing A1111 Web UI"
 wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/install-automatic.py
@@ -34,10 +35,11 @@ python3 -m install-automatic --skip-torch-cuda-test
 echo "Cloning ControlNet extension repo"
 cd /workspace/stable-diffusion-webui
 git clone --depth=1 https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet
+git checkout 9fae97fe292f3aec30d7694cdf7ecf8c854b5cdb
 
 echo "Cloning the ReActor extension repo"
 git clone https://github.com/Gourieff/sd-webui-reactor.git extensions/sd-webui-reactor
-git checkout v0.6.1
+git checkout v0.7.0
 
 echo "Cloning the After Detailer extension repo"
 git clone --depth=1 https://github.com/Bing-su/adetailer.git extensions/adetailer
