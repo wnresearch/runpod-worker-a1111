@@ -37,7 +37,8 @@ API_SCHEMA = {
             'sdapi/v1/refresh-loras',
             'controlnet/model_list',
             'v1/download',
-            'v1/sync'
+            'v1/sync',
+            'reactor/image'
         ]
     }
 }

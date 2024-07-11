@@ -16,7 +16,7 @@ from schemas.sync import SYNC_SCHEMA
 from schemas.download import DOWNLOAD_SCHEMA
 
 BASE_URI = 'http://127.0.0.1:3000'
-TIMEOUT = 600
+TIMEOUT = 1200
 POST_RETRIES = 3
 
 session = requests.Session()
